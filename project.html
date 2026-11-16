@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Details — NOIR®</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #111111;
+      color: #f5ede3;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    nav {
+      height: 85px;
+      padding: 0 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #292929;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 27px;
+      font-weight: 700;
+      color: #f5ede3;
+      text-decoration: none;
+    }
+
+    .back-link {
+      color: #f5ede3;
+      text-decoration: none;
+      font-size: 13px;
+      transition: .3s;
+    }
+
+    .back-link:hover {
+      color: #ff623e;
+    }
+
+    .project-hero {
+      padding: 110px 7% 65px;
+    }
+
+    .eyebrow {
+      color: #ff623e;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+    }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(55px, 10vw, 125px);
+      line-height: .95;
+      letter-spacing: -7px;
+      max-width: 1000px;
+    }
+
+    h1 span {
+      color: #ff623e;
+    }
+
+    .project-intro {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      align-items: end;
+      margin-top: 55px;
+    }
+
+    .project-intro p {
+      color: #aaa;
+      max-width: 450px;
+      font-size: 15px;
+      line-height: 1.9;
+    }
+
+    .project-meta {
+      display: flex;
+      gap: 35px;
+    }
+
+    .meta-item small {
+      display: block;
+      color: #777;
+      font-size: 10px;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .meta-item strong {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .main-image {
+      padding: 0 7%;
+    }
+
+    .main-image img {
+      width: 100%;
+      height: 550px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-project {
+      padding: 120px 7%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .about-project h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 45px;
+      line-height: 1.1;
+    }
+
+    .about-project h2 span {
+      color: #ff623e;
+    }
+
+    .about-text p {
+      color: #aaa;
+      font-size: 15px;
+      line-height: 2;
+      margin-bottom: 20px;
+    }
+
+    .gallery {
+      padding: 0 7% 120px;
+    }
+
+    .gallery-title {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: #ff623e;
+      margin-bottom: 35px;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .next-project {
+      padding: 100px 7%;
+      border-top: 1px solid #292929;
+      text-align: center;
+    }
+
+    .next-project p {
+      color: #888;
+      font-size: 11px;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+    }
+
+    .next-project a {
+      font-family: 'Space Grotesk', sans-serif;
+      color: #f5ede3;
+      font-size: clamp(40px, 8vw, 85px);
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    .next-project a:hover {
+      color: #ff623e;
+    }
+
+    footer {
+      padding: 30px 7%;
+      border-top: 1px solid #292929;
+      display: flex;
+      justify-content: space-between;
+      color: #777;
+      font-size: 11px;
+    }
+
+    @media(max-width: 700px) {
+      nav {
+        height: 70px;
+      }
+
+      .project-hero {
+        padding-top: 80px;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .project-intro {
+        flex-direction: column;
+        align-items: start;
+      }
+
+      .project-meta {
+        flex-wrap: wrap;
+        gap: 25px;
+      }
+
+      .main-image img {
+        height: 300px;
+      }
+
+      .about-project {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-top: 80px;
+      }
+
+      .about-project h2 {
+        font-size: 36px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid img {
+        height: 280px;
+      }
+
+      footer {
+        gap: 15px;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">NOIR®</a>
+    <a href="index.html#projects" class="back-link">← BACK TO PROJECTS</a>
+  </nav>
+
+  <section class="project-hero">
+    <p class="eyebrow">SELECTED WORK — 2026</p>
+
+    <h1>BRAND<br><span>IDENTITY.</span></h1>
+
+    <div class="project-intro">
+      <p>
+        A visual identity designed to create a strong,
+        memorable and distinctive brand experience.
+        Combining strategy, creativity and modern design.
+      </p>
+
+      <div class="project-meta">
+        <div class="meta-item">
+          <small>CLIENT</small>
+          <strong>STUDIO ONE</strong>
+        </div>
+
+        <div class="meta-item">
+          <small>YEAR</small>
+          <strong>2026</strong>
+        </div>
+
+        <div class="meta-item">
+          <small>SERVICES</small>
+          <strong>Branding</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-image">
+    <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1600"
+         alt="Brand identity project">
+  </section>
+
+  <section class="about-project">
+    <div>
+      <p class="eyebrow">01 — THE PROJECT</p>
+      <h2>CREATING A<br>STRONG <span>IDENTITY.</span></h2>
+    </div>
+
+    <div class="about-text">
+      <p>
+        Every great brand starts with a clear vision.
+        Our goal was to transform an idea into a
+        complete visual identity with a unique personality.
+      </p>
+
+      <p>
+        From the visual direction to the smallest details,
+        every element was carefully designed to create
+        a consistent and recognizable brand experience.
+      </p>
+    </div>
+  </section>
+
+  <section class="gallery">
+    <p class="gallery-title">02 — VISUAL EXPLORATION</p>
+
+    <div class="gallery-grid">
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000"
+           alt="Creative workspace">
+
+      <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=1000"
+           alt="Graphic design">
+    </div>
+  </section>
+
+  <section class="next-project">
+    <p>HAVE A PROJECT IN MIND?</p>
+    <a href="index.html#contact">LET'S TALK ↗</a>
+  </section>
+
+  <footer>
+    <span>© 2026 NOIR® STUDIO</span>
+    <span>DESIGNED TO BE DIFFERENT.</span>
+  </footer>
+
+</body>
+</html>
