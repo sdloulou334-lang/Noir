@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOIR® — Creative Portfolio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg: #111111;
+  --orange: #ff623e;
+  --beige: #f5ede3;
+  --muted: #999;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--beige);
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* PRELOADER */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .8s ease, visibility .8s ease;
+}
+
+.loader-content {
+  text-align: center;
+}
+
+.loader-content h1 {
+  font-size: 65px;
+  letter-spacing: -4px;
+}
+
+.loader-content h1 span {
+  color: var(--orange);
+}
+
+.loader-content p {
+  color: var(--muted);
+  font-size: 10px;
+  letter-spacing: 4px;
+  margin-top: 18px;
+}
+
+.loader-line {
+  width: 180px;
+  height: 2px;
+  background: #333;
+  margin: 20px auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-line::after {
+  content: "";
+  position: absolute;
+  width: 45%;
+  height: 100%;
+  background: var(--orange);
+  animation: loading 1.2s infinite ease-in-out;
+}
+
+@keyframes loading {
+  from { left: -45%; }
+  to { left: 100%; }
+}
+
+.preloader.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* CUSTOM CURSOR */
+
+.custom-cursor {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--orange);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: width .25s, height .25s;
+}
+
+.cursor-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--orange);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+}
+
+@media (hover: none) {
+  .custom-cursor, .cursor-dot {
+    display: none;
+  }
+}
+
+/* NAVBAR */
+
+nav {
+  height: 90px;
+  padding: 0 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ffffff12;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: -2px;
+}
+
+.logo span {
+  color: var(--orange);
+}
+
+.nav-links {
+  display: flex;
+  gap: 35px;
+  list-style: none;
+  font-size: 12px;
+  color: #aaa;
+}
+
+.nav-links a:hover {
+  color: var(--orange);
+}
+
+.nav-contact {
+  border: 1px solid #555;
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-size: 12px;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 690px;
+  padding: 100px 8% 80px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.eyebrow {
+  color: var(--orange);
+  font-size: 11px;
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+}
+
+.hero h1 {
+  font-size: clamp(65px, 11vw, 150px);
+  line-height: .86;
+  letter-spacing: -9px;
+  max-width: 950px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero h1 span {
+  color: var(--orange);
+}
+
+.hero-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-top: 55px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-bottom p {
+  color: #999;
+  max-width: 300px;
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+.hero-btn {
+  background: var(--orange);
+  color: #111;
+  padding: 17px 27px;
+  border-radius: 40px;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-block;
+  transition: .3s;
+}
+
+.hero-btn:hover {
+  background: var(--beige);
+  transform: translateY(-5px);
+}
+
+/* ORB */
+
+.orb {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ffb19b, #ff623e 35%, #7b1e13 75%);
+  filter: blur(1px);
+  right: 9%;
+  top: 25%;
+  opacity: .8;
+  animation: float 6s ease-in-out infinite;
+  box-shadow: 0 0 100px #ff623e35;
+}
+
+@keyframes float {
+  0%,100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-30px) rotate(12deg); }
+}
+
+/* MARQUEE */
+
+.marquee {
+  border-top: 1px solid #ffffff20;
+  border-bottom: 1px solid #ffffff20;
+  padding: 23px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-block;
+  animation: marquee 22s linear infinite;
+  font-size: 18px;
+  letter-spacing: 4px;
+  color: var(--beige);
+}
+
+.marquee-track span {
+  color: var(--orange);
+  margin: 0 30px;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* PROJECTS */
+
+.projects {
+  padding: 120px 8%;
+}
+
+.section-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 55px;
+}
+
+.section-top h2 {
+  font-size: clamp(45px, 7vw, 85px);
+  letter-spacing: -5px;
+  line-height: .95;
+}
+
+.section-top p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.project-card {
+  transform-style: preserve-3d;
+  transition: transform .2s ease, box-shadow .3s ease;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.project-visual {
+  height: 390px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.project-visual.one {
+  background: #d8bda8;
+  color: #171311;
+}
+
+.project-visual.two {
+  background: #d65d3e;
+  color: #171311;
+}
+
+.project-visual.three {
+  background: #252525;
+  color: #f5ede3;
+}
+
+.project-visual.four {
+  background: #c6b6a5;
+  color: #171311;
+}
+
+.project-visual h3 {
+  font-size: clamp(40px, 6vw, 75px);
+  font-weight: 700;
+  letter-spacing: -5px;
+  text-align: center;
+  line-height: .9;
+  transform: translateZ(35px);
+}
+
+.project-visual .number {
+  position: absolute;
+  top: 22px;
+  left: 22px;
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.project-info {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0 35px;
+}
+
+.project-info h4 {
+  font-size: 17px;
+}
+
+.project-info p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 7px;
+}
+
+/* ABOUT */
+
+.about {
+  padding: 120px 8%;
+  background: #1a1a1a;
+}
+
+.about h2 {
+  font-size: clamp(42px, 7vw, 90px);
+  letter-spacing: -5px;
+  max-width: 900px;
+  line-height: 1;
+}
+
+.about h2 span {
+  color: var(--orange);
+}
+
+.about-text {
+  margin-top: 40px;
+  margin-left: auto;
+  max-width: 420px;
+  color: #999;
+  line-height: 1.9;
+  font-size: 14px;
+}
+
+/* CONTACT */
+
+.contact {
+  padding: 120px 8%;
+}
+
+.contact h2 {
+  font-size: clamp(55px, 10vw, 125px);
+  letter-spacing: -8px;
+  line-height: .9;
+}
+
+.contact h2 span {
+  color: var(--orange);
+}
+
+.contact-link {
+  display: inline-block;
+  margin-top: 45px;
+  border-bottom: 1px solid var(--orange);
+  padding-bottom: 10px;
+  font-size: 16px;
+}
+
+footer {
+  border-top: 1px solid #ffffff20;
+  padding: 30px 8%;
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-size: 11px;
+}
+
+/* SCROLL REVEAL */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  nav {
+    height: 75px;
+    padding: 0 6%;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    min-height: 650px;
+    padding: 100px 6%;
+  }
+
+  .hero h1 {
+    font-size: 65px;
+    letter-spacing: -5px;
+  }
+
+  .orb {
+    width: 190px;
+    height: 190px;
+    right: -30px;
+    top: 38%;
+    opacity: .55;
+  }
+
+  .hero-bottom {
+    flex-direction: column;
+    align-items: start;
+    gap: 25px;
+  }
+
+  .projects, .about, .contact {
+    padding: 85px 6%;
+  }
+
+  .section-top {
+    display: block;
+  }
+
+  .section-top p {
+    margin-top: 20px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .project-visual {
+    height: 300px;
+  }
+
+  .about h2 {
+    letter-spacing: -3px;
+  }
+
+  .contact h2 {
+    letter-spacing: -4px;
+  }
+
+  footer {
+    padding: 25px 6%;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* NEW HERO DESIGN */
+
+.hero-new {
+  min-height: 780px;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 130px 8% 70px;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+}
+
+.hero-new h1 {
+  font-size: clamp(65px, 10vw, 145px);
+  line-height: .88;
+  letter-spacing: -9px;
+  max-width: 1000px;
+  animation: heroEntry 1s ease both;
+}
+
+.hero-new h1 span {
+  color: var(--orange);
+}
+
+.hero-new .eyebrow {
+  animation: heroEntry 1s .2s ease both;
+}
+
+.hero-new .hero-bottom {
+  max-width: 750px;
+  margin-top: 55px;
+  animation: heroEntry 1s .4s ease both;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  right: -100px;
+  top: 100px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff623e45, transparent 70%);
+  filter: blur(35px);
+  z-index: -1;
+}
+
+.hero-shape {
+  position: absolute;
+  right: 10%;
+  top: 30%;
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  border: 1px solid #ff623e80;
+  display: grid;
+  place-items: center;
+  animation: rotateShape 15s linear infinite;
+}
+
+.shape-inner {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #ffb19b, #ff623e 45%, #55170f);
+  box-shadow: 0 0 80px #ff623e55;
+  animation: float 5s ease-in-out infinite;
+}
+
+.hero-index {
+  position: absolute;
+  bottom: 35px;
+  left: 8%;
+  right: 8%;
+  display: flex;
+  justify-content: space-between;
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 3px;
+}
+
+@keyframes rotateShape {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heroEntry {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media(max-width: 768px) {
+  .hero-new {
+    min-height: 680px;
+    padding: 120px 6% 80px;
+  }
+
+  .hero-new h1 {
+    font-size: 65px;
+    letter-spacing: -5px;
+  }
+
+  .hero-shape {
+    width: 150px;
+    height: 150px;
+    right: 5%;
+    top: 48%;
+    opacity: .7;
+  }
+
+  .shape-inner {
+    width: 95px;
+    height: 95px;
+  }
+
+  .hero-new .hero-bottom {
+    margin-top: 45px;
+  }
+
+  .hero-index {
+    left: 6%;
+    right: 6%;
+  }
+}
+
+/* PREMIUM PROJECT GALLERY */
+
+.project-visual {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  border-radius: 4px;
+  transition: transform .5s ease;
+}
+
+.project-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,.75),
+    transparent 65%
+  );
+  opacity: .5;
+  transition: .5s;
+  z-index: 1;
+}
+
+.project-visual h3 {
+  position: relative;
+  z-index: 2;
+  transition: transform .6s ease;
+}
+
+.project-card:hover .project-visual {
+  transform: scale(.98);
+}
+
+.project-card:hover .project-visual::before {
+  opacity: 1;
+}
+
+.project-card:hover .project-visual h3 {
+  transform: translateZ(35px) scale(1.08);
+}
+
+.project-visual .number {
+  z-index: 3;
+}
+
+.project-info {
+  border-bottom: 1px solid #ffffff20;
+}
+
+.project-info span {
+  color: var(--orange);
+  font-size: 22px;
+  transition: transform .3s;
+}
+
+.project-card:hover .project-info span {
+  transform: translate(5px,-5px);
+}
+
+.project-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  transition: transform .8s ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.08);
+}
+
+.project-visual h3 {
+  text-shadow: 0 3px 25px rgba(0,0,0,.4);
+}
+
+/* SERVICES SECTION */
+
+.services {
+  padding: 130px 8%;
+  background: #111111;
+}
+
+.services-header {
+  position: relative;
+  margin-bottom: 80px;
+}
+
+.services-header h2 {
+  font-size: clamp(65px, 10vw, 125px);
+  line-height: .85;
+  letter-spacing: -8px;
+}
+
+.services-header h2 span {
+  color: var(--orange);
+}
+
+.services-description {
+  max-width: 320px;
+  color: #999;
+  font-size: 13px;
+  line-height: 1.8;
+  margin-top: 30px;
+}
+
+.service-item {
+  display: grid;
+  grid-template-columns: 80px 1fr 50px;
+  align-items: center;
+  padding: 35px 0;
+  border-top: 1px solid #ffffff25;
+  transition: padding .4s ease, background .4s ease;
+}
+
+.service-item:last-child {
+  border-bottom: 1px solid #ffffff25;
+}
+
+.service-item:hover {
+  padding-left: 20px;
+  background: #ffffff05;
+}
+
+.service-number {
+  color: var(--orange);
+  font-size: 12px;
+}
+
+.service-info h3 {
+  font-size: clamp(23px, 4vw, 40px);
+  letter-spacing: -1.5px;
+  transition: color .3s;
+}
+
+.service-item:hover h3 {
+  color: var(--orange);
+}
+
+.service-info p {
+  color: #888;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.service-arrow {
+  font-size: 25px;
+  color: var(--orange);
+  transition: transform .3s;
+}
+
+.service-item:hover .service-arrow {
+  transform: translate(7px, -7px);
+}
+
+@media(max-width: 768px) {
+  .services {
+    padding: 90px 6%;
+  }
+
+  .services-header h2 {
+    letter-spacing: -5px;
+  }
+
+  .service-item {
+    grid-template-columns: 40px 1fr 25px;
+    padding: 28px 0;
+  }
+
+  .service-info p {
+    max-width: 230px;
+    line-height: 1.6;
+  }
+}
+
+/* NEW ABOUT SECTION */
+
+.about-new {
+  padding: 120px 8%;
+  background: #1a1a1a;
+}
+
+.about-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ffffff25;
+  padding-bottom: 25px;
+}
+
+.about-symbol {
+  color: var(--orange);
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.about-heading {
+  font-size: clamp(55px, 9.5vw, 130px);
+  line-height: .9;
+  letter-spacing: -8px;
+  margin-top: 80px;
+}
+
+.about-heading span {
+  color: var(--orange);
+}
+
+.about-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 65px;
+  align-items: start;
+}
+
+.about-label {
+  display: flex;
+  flex-direction: column;
+  color: var(--orange);
+  font-size: 11px;
+  letter-spacing: 3px;
+  line-height: 2;
+}
+
+.about-bottom > p {
+  color: #999;
+  font-size: 14px;
+  line-height: 2;
+  max-width: 450px;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 100px;
+  padding-top: 35px;
+  border-top: 1px solid #ffffff25;
+}
+
+.about-stats h3 {
+  font-size: 55px;
+  letter-spacing: -3px;
+}
+
+.about-stats h3 span {
+  color: var(--orange);
+}
+
+.about-stats p {
+  color: #888;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-top: 10px;
+}
+
+@media(max-width: 768px) {
+  .about-new {
+    padding: 90px 6%;
+  }
+
+  .about-heading {
+    font-size: 58px;
+    letter-spacing: -5px;
+    margin-top: 60px;
+  }
+
+  .about-bottom {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .about-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    margin-top: 65px;
+  }
+
+  .about-stats h3 {
+    font-size: 42px;
+  }
+}
+
+.project-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-link:hover .project-info h4 {
+  color: var(--orange);
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- PRELOADER -->
+<div class="preloader">
+  <div class="loader-content">
+    <h1>NOIR<span>®</span></h1>
+    <div class="loader-line"></div>
+    <p>LOADING EXPERIENCE...</p>
+  </div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div class="custom-cursor"></div>
+<div class="cursor-dot"></div>
+
+<!-- NAVBAR -->
+<nav>
+  <a href="#" class="logo">NOIR<span>®</span></a>
+
+  <ul class="nav-links">
+    <li><a href="#home">HOME</a></li>
+    <li><a href="#projects">PROJECTS</a></li>
+    <li><a href="#about">ABOUT</a></li>
+  </ul>
+
+  <a href="#contact" class="nav-contact">LET'S TALK ↗</a>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero hero-new" id="home">
+
+  <div class="hero-glow"></div>
+
+  <div class="hero-content">
+    <p class="eyebrow">INDEPENDENT CREATIVE STUDIO — 2026</p>
+
+    <h1>
+      WE CREATE<br>
+      WHAT'S <span>NEXT.</span>
+    </h1>
+
+    <div class="hero-bottom">
+      <p>
+        We transform bold ideas into extraordinary
+        digital experiences.
+      </p>
+
+      <a href="#projects" class="hero-btn">
+        DISCOVER OUR WORK ↗
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-index">
+    <span>SCROLL TO EXPLORE</span>
+    <span>01 — 04</span>
+  </div>
+
+  <div class="hero-shape">
+    <div class="shape-inner"></div>
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    CREATIVE DESIGN <span>✳</span>
+    DIGITAL EXPERIENCE <span>✳</span>
+    ART DIRECTION <span>✳</span>
+    CREATIVE DESIGN <span>✳</span>
+    DIGITAL EXPERIENCE <span>✳</span>
+    ART DIRECTION <span>✳</span>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section class="projects" id="projects">
+
+  <div class="section-top reveal">
+    <h2>SELECTED<br>WORKS<span>.</span></h2>
+    <p>A SELECTION OF CREATIVE EXPERIMENTS — 2026</p>
+  </div>
+
+  <div class="project-grid">
+
+    <div class="project-card reveal">
+      
+<div class="project-visual one">
+  <span class="number">01 / BRANDING</span>
+  <img
+    src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1000"
+    alt="Luxury brand identity"
+    class="project-image">
+  <h3>FORM<br>FOLLOWS<br>FEELING.</h3>
+</div>
+
+        <span class="number">01 / BRANDING</span>
+        <h3>FORM<br>FOLLOWS<br>FEELING.</h3>
+      </div>
+      <div class="project-info">
+        <div>
+          <h4>FORM STUDIO</h4>
+          <p>BRAND IDENTITY / ART DIRECTION</p>
+        </div>
+        <span>↗</span>
+      </div>
+    </div>
+
+    
+<div class="project-card reveal">
+
+  <a href="project.html" class="project-link">
+
+    <div class="project-visual one">
+      <span class="number">01 / BRANDING</span>
+
+      <img
+        src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1000"
+        alt="Luxury brand identity"
+        class="project-image">
+
+      <h3>FORM<br>FOLLOWS<br>FEELING.</h3>
+    </div>
+
+    <div class="project-info">
+      <div>
+        <h4>FORM STUDIO</h4>
+        <p>BRAND IDENTITY / ART DIRECTION</p>
+      </div>
+      <span>↗</span>
+    </div>
+
+  </a>
+
+</div>
+
+      
+<div class="project-visual two">
+  <span class="number">02 / DIGITAL</span>
+  <img
+    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000"
+    alt="Digital website design"
+    class="project-image">
+  <h3>MAKE<br>IT<br>MATTER.</h3>
+</div>
+
+        <span class="number">02 / DIGITAL</span>
+        <h3>MAKE<br>IT<br>MATTER.</h3>
+      </div>
+      <div class="project-info">
+        <div>
+          <h4>MATTER®</h4>
+          <p>DIGITAL DESIGN / STRATEGY</p>
+        </div>
+        <span>↗</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      
+<div class="project-visual three">
+  <span class="number">03 / CREATIVE</span>
+  <img
+    src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1000"
+    alt="Creative studio"
+    class="project-image">
+  <h3>LESS<br>BUT<br>BETTER.</h3>
+</div>
+
+        <span class="number">03 / CREATIVE</span>
+        <h3>LESS<br>BUT<br>BETTER.</h3>
+      </div>
+      <div class="project-info">
+        <div>
+          <h4>OBJECT 03</h4>
+          <p>CREATIVE DIRECTION / DESIGN</p>
+        </div>
+        <span>↗</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      
+<div class="project-visual four">
+  <span class="number">04 / CONCEPT</span>
+  <img
+    src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=1000"
+    alt="Creative graphic design"
+    class="project-image">
+  <h3>THINK<br>IN<br>COLOUR.</h3>
+</div>
+
+        <span class="number">04 / CONCEPT</span>
+        <h3>THINK<br>IN<br>COLOUR.</h3>
+      </div>
+      <div class="project-info">
+        <div>
+          <h4>COLOUR THEORY</h4>
+          <p>VISUAL EXPERIMENT / CONCEPT</p>
+        </div>
+        <span>↗</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section class="services" id="services">
+
+  <div class="services-header reveal">
+    <p class="eyebrow">WHAT WE DO</p>
+    <h2>OUR<br><span>SERVICES.</span></h2>
+    <p class="services-description">
+      We combine creativity, strategy and technology
+      to build meaningful digital experiences.
+    </p>
+  </div>
+
+  <div class="services-list">
+
+    <div class="service-item reveal">
+      <span class="service-number">01</span>
+      <div class="service-info">
+        <h3>Brand Identity</h3>
+        <p>Building memorable brands with unique visual identities.</p>
+      </div>
+      <span class="service-arrow">↗</span>
+    </div>
+
+    <div class="service-item reveal">
+      <span class="service-number">02</span>
+      <div class="service-info">
+        <h3>Web Design</h3>
+        <p>Designing modern websites that combine beauty and function.</p>
+      </div>
+      <span class="service-arrow">↗</span>
+    </div>
+
+    <div class="service-item reveal">
+      <span class="service-number">03</span>
+      <div class="service-info">
+        <h3>Creative Direction</h3>
+        <p>Creating powerful concepts and visual experiences.</p>
+      </div>
+      <span class="service-arrow">↗</span>
+    </div>
+
+    <div class="service-item reveal">
+      <span class="service-number">04</span>
+      <div class="service-info">
+        <h3>Digital Experience</h3>
+        <p>Transforming ideas into interactive digital products.</p>
+      </div>
+      <span class="service-arrow">↗</span>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="about about-new" id="about">
+
+  <div class="about-top reveal">
+    <p class="eyebrow">WHO WE ARE — 2026</p>
+    <span class="about-symbol">NOIR®</span>
+  </div>
+
+  <h2 class="about-heading reveal">
+    WE DON'T<br>
+    FOLLOW <span>TRENDS.</span><br>
+    WE CREATE<br>
+    <span>IMPACT.</span>
+  </h2>
+
+  <div class="about-bottom reveal">
+
+    <div class="about-label">
+      <span>INDEPENDENT</span>
+      <span>CREATIVE STUDIO</span>
+    </div>
+
+    <p>
+      NOIR is an independent creative studio exploring
+      the intersection of design, technology and culture.
+      We build bold identities and digital experiences
+      that make brands impossible to ignore.
+    </p>
+
+  </div>
+
+  <div class="about-stats reveal">
+
+    <div>
+      <h3>04<span>+</span></h3>
+      <p>CREATIVE DISCIPLINES</p>
+    </div>
+
+    <div>
+      <h3>100<span>%</span></h3>
+      <p>CREATIVE THINKING</p>
+    </div>
+
+    <div>
+      <h3>∞</h3>
+      <p>POSSIBILITIES</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <p class="eyebrow reveal">HAVE A PROJECT IN MIND?</p>
+
+  <h2 class="reveal">
+    LET'S MAKE<br>
+    SOMETHING<br>
+    <span>MATTER.</span>
+  </h2>
+
+  <a href="mailto:hello@example.com" class="contact-link reveal">
+    hello@example.com ↗
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 NOIR® — ALL RIGHTS RESERVED.</p>
+  <p>DESIGNED WITH INTENTION.</p>
+</footer>
+
+<script>
+
+/* PRELOADER */
+
+window.addEventListener("load", function() {
+  const preloader = document.querySelector(".preloader");
+
+  setTimeout(function() {
+    preloader.classList.add("hide");
+  }, 1200);
+});
+
+/* CUSTOM CURSOR */
+
+const cursor = document.querySelector(".custom-cursor");
+const dot = document.querySelector(".cursor-dot");
+
+document.addEventListener("mousemove", function(e) {
+  cursor.style.left = e.clientX + "px";
+  cursor.style.top = e.clientY + "px";
+
+  dot.style.left = e.clientX + "px";
+  dot.style.top = e.clientY + "px";
+});
+
+document.querySelectorAll("a, .project-card").forEach(item => {
+  item.addEventListener("mouseenter", () => {
+    cursor.style.width = "65px";
+    cursor.style.height = "65px";
+  });
+
+  item.addEventListener("mouseleave", () => {
+    cursor.style.width = "42px";
+    cursor.style.height = "42px";
+  });
+});
+
+/* 3D PROJECT CARDS */
+
+document.querySelectorAll(".project-card").forEach(card => {
+  card.addEventListener("mousemove", e => {
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = (y - centerY) / 15;
+    const rotateY = (centerX - x) / 15;
+
+    card.style.transform =
+      `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  card.addEventListener("mouseleave", () => {
+    card.style.transform =
+      "perspective(1000px) rotateX(0) rotateY(0)";
+  });
+});
+
+/* SCROLL REVEAL */
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.15
+});
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+
+/* ORB MOUSE MOVEMENT */
+
+const orb = document.querySelector(".orb");
+
+document.addEventListener("mousemove", e => {
+  const x = (e.clientX / window.innerWidth - 0.5) * 20;
+  const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+  orb.style.marginLeft = x + "px";
+  orb.style.marginTop = y + "px";
+});
+
+</script>
+
+</body>
+</html>
